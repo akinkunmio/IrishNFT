@@ -1,0 +1,88 @@
+﻿@page
+@model IrishNFT.Pages.ShoppingCartModel
+@{
+}
+
+<div  class="text-center">
+   <p>
+
+        <a style="color:darkred;font-style:italic; font-size-adjust:inherit; font-size: large; font-style:italic; font-family:'Comic Sans MS';" asp-page="ProductList" asp-route-id="@Model.Categories[0].CategoryID">@Model.Categories[0].Description </a> &nbsp
+
+        
+    @for(int index = 1; index < Model.Categories.Count(); index++) {
+            var cat = Model.Categories[index];
+            <a style="color:darkred;font-style:italic; font-size-adjust:inherit; font-size: large; font-style:italic; font-family:'Comic Sans MS' ; align-content:center" asp-page="ProductList" asp-route-id="@Model.Categories[index].CategoryID">@Model.Categories[index].Description </a>@Html.Raw("&nbsp" );
+        }
+    </p>
+
+</div>
+<br/><br/><br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item Id
+            </th>
+            <th>
+                Product Id
+            </th>
+            <th>
+                Product 
+            </th>
+            <th>
+               Price
+            </th>
+            <th>
+               Delete Item
+            </th>
+          
+           @* <th>
+                @Html.DisplayNameFor(model => model.Product[0].Category)
+            </th>
+            <th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartItems)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+                <td>
+                    <a asp-page="ProductDetails" asp-route-id="@item.ProductId">@item.Product.ProductName</a>
+                </td>
+               
+                <td>
+                    @String.Format("{0:c}",  @item.Product.UnitPrice)
+                </td>
+                <td>
+                    <form class="form-inline"  method="post">
+                        <button type="submit" asp-page="/ShoppingCart" asp-route-id="@item.ItemId" class="btn btn-outline-danger">Remove</button>
+            </form>
+                </td>
+              @*  <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryID)
+                </td>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+            </form>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ProductId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ProductId">Delete</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br/><br/><br/>
+
+<p>@Html.Raw("<b>Total:</b> &nbsp" );  @String.Format("{0:c}",  @Model.Total)</p>
+
+

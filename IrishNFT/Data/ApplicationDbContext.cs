@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using IrishNFT.Models;
 
 namespace IrishNFT.Data
 {
@@ -9,5 +10,6 @@ namespace IrishNFT.Data
             : base(options)
         {
         }
+        public DbSet<IrishNFT.Models.Product>? Product { get; set; }
     }
 }

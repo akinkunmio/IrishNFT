@@ -12,9 +12,10 @@ namespace IrishNFT.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-
+            //return new RedirectToPageResult("/Portal/Login");
+            return RedirectToPage("./ProductList");
         }
     }
 }
