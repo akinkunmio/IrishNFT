@@ -34,6 +34,7 @@
             <p>
                 <img src='/img/@product.ImageBase64' style="overflow: hidden; position: relative; width:300px; height:300px;" />
             </p>
+            <p> @Html.Raw("<b>Created By:</b> &nbsp" ); @String.Format("{0:c}", @product?.CreatedBy) </p>
             <p> @Html.Raw("<b>Price:</b> &nbsp" ); @String.Format("{0:c}", @product?.UnitPrice) </p>
             <p> @Html.Raw("<b>Category:</b> &nbsp" ); <a asp-page="ProductList" asp-route-id="@product?.Category?.CategoryID">@product?.Category?.Description </a><p> </p>   </p>
             @if (User.Identity?.IsAuthenticated ?? false)

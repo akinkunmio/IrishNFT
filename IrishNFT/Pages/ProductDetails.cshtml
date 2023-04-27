@@ -33,6 +33,8 @@
             <br />
             <b>Product Number:</b>&nbsp;@Model.Product?.ProductId
             <br />
+            <b>Created By:</b>&nbsp;@Model.Product?.CreatedBy
+            <br />
             <p> @Html.Raw("<b>Category:</b> &nbsp" ); <a asp-page="ProductList" asp-route-id="@Model.Product?.CategoryID">@Model.Product?.Category?.Description </a><p> </p>   </p>
             <br />
             @if (User.Identity?.IsAuthenticated ?? false)
