@@ -95,7 +95,7 @@ namespace IrishNFT.Services
         {
             try
             {
-                var request = new HttpRequestMessage(HttpMethod.Delete, $"/api/cartitem/{id}");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"/api/cartitem/{id}");
 
                 var response = await _httpClient.SendAsync(request);
                 var responseResult = await response.Content.ReadAsStringAsync();

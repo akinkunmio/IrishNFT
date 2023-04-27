@@ -47,8 +47,8 @@ namespace IrishNFT.Pages
         {
             if(id != null)
             {
-                await _cartItemService.DeleteCartItemId((int)id);
                 var cart = await _cartItemService.GetyCartItemById((int)id);
+                await _cartItemService.DeleteCartItemId((int)id);
                 await _productService.SetProductStatus((int)cart.ProductId, Status.Available);
             }
 
